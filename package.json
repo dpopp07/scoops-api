@@ -5,18 +5,49 @@
   "description": "An API supporting the Scoops ice cream recipe app.",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run type-check && tsx watch src/server.ts",
+    "type-check": "tsc --noEmit",
+    "build": "tsc",
+    "clean": "tsc --build --clean",
+    "test": "jest",
+    "lint": "eslint",
+    "fix": "eslint --fix",
+    "format": "prettier --write ."
   },
   "author": "Dustin Popp",
   "license": "MIT",
   "dependencies": {
+    "ajv": "^8.17.1",
+    "compression": "^1.8.0",
     "cors": "^2.8.5",
+    "env-schema": "^6.0.1",
     "express": "^5.0.1",
-    "morgan": "^1.10.0",
-    "pg": "^8.13.1"
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "pino": "^9.6.0",
+    "pino-http": "^10.4.0",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "@eslint/js": "^9.21.0",
+    "@jest/globals": "^29.7.0",
+    "@types/compression": "^1.7.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/morgan": "^1.9.9",
+    "@types/pg": "^8.11.11",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.1",
+    "globals": "^16.0.0",
+    "jest": "^29.7.0",
+    "pino-pretty": "^13.0.0",
+    "prettier": "3.5.2",
+    "ts-jest": "^29.2.6",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.25.0"
   }
 }
