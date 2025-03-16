@@ -5,6 +5,7 @@ export interface UserPrototype {
 
 export interface User extends UserPrototype {
   id: string;
+  createdAt: string;
 }
 
 export interface UserWithToken extends User {

@@ -63,6 +63,8 @@ describe('Controllers: Users', () => {
       expect(createdUserInfo.name).toBe(userPrototype.name);
       expect(createdUserInfo.isAdmin).toBe(userPrototype.isAdmin);
       expect(validate(createdUserInfo.id)).toBe(true);
+      expect(new Date(createdUserInfo.createdAt)).toBeInstanceOf(Date);
+      expect(new Date(createdUserInfo.createdAt).getTime()).not.toBeNaN();
 
       expect(hashSpy).toHaveBeenCalledWith(token);
 
@@ -70,6 +72,7 @@ describe('Controllers: Users', () => {
         expect.objectContaining({
           ...createdUserInfo,
           token: hash,
+          createdAt: expect.any(String),
         }),
       );
 

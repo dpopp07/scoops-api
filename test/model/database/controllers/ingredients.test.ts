@@ -226,6 +226,7 @@ describe('Database Controllers: Ingredients', () => {
 function getIngredient(): Ingredient {
   return {
     id: 'my-ingredient-1234',
+    createdAt: '2025-03-16T03:06:22.133Z',
     ...ingredientData.toastedMilkPowder,
   };
 }
@@ -233,6 +234,7 @@ function getIngredient(): Ingredient {
 function getIngredientWithoutPrep(): Ingredient {
   return {
     id: 'my-prepless-ingredient-1234',
+    createdAt: '2025-03-16T03:06:22.133Z',
     ...ingredientData.dextrose,
   };
 }

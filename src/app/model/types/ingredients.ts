@@ -58,6 +58,7 @@ export interface IngredientPrototype extends AnalyzableIngredient {
 
 export interface Ingredient extends IngredientPrototype {
   id: string;
+  createdAt: string;
 }
 
 export interface IngredientMap {

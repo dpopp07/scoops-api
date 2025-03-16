@@ -18,6 +18,7 @@ export interface IngredientTable {
   stabilizers?: number;
   preparation_instructions?: string[];
   preparation_description?: string;
+  created_at: string;
 }
 
 export function tableToIngredient(table: IngredientTable): Ingredient {
@@ -37,6 +38,7 @@ export function tableToIngredient(table: IngredientTable): Ingredient {
     stabilizers,
     preparation_instructions,
     preparation_description,
+    created_at,
   } = table;
 
   const ingredient: Ingredient = {
@@ -44,6 +46,7 @@ export function tableToIngredient(table: IngredientTable): Ingredient {
     name,
     description,
     category,
+    createdAt: created_at,
   };
 
   const optionalData = Object.entries({

@@ -12,6 +12,7 @@ import {
   analyze,
   cacheControlHeader,
   canonicalizeName,
+  computeDateTime,
   getLogger,
   parseAjvErrors,
 } from '../utils';
@@ -147,6 +148,7 @@ export async function createRecipe(req: Request, res: Response) {
     canonicalName,
     version,
     analysis,
+    createdAt: computeDateTime(),
   };
 
   await recipeStore.create(recipe);

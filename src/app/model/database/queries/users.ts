@@ -20,17 +20,18 @@ export async function selectUser(
 }
 
 export async function insertUser(user: UserWithToken, client?: Queryable) {
-  const { id, name, token, isAdmin } = user;
+  const { id, name, token, isAdmin, createdAt } = user;
 
   const insertQuery = `
     INSERT INTO ${UserTableName} (
       id,
       name,
       token,
-      is_admin
+      is_admin,
+      created_at
     ) VALUES (
-      $1, $2, $3, $4
+      $1, $2, $3, $4, $5
     )`;
 
-  await query(insertQuery, [id, name, token, isAdmin], client);
+  await query(insertQuery, [id, name, token, isAdmin, createdAt], client);
 }

@@ -106,13 +106,15 @@ export async function insertIngredient(
       sugars,
       stabilizers,
       preparation_instructions,
-      preparation_description
+      preparation_description,
+      created_at
     ) VALUES (
       $1, $2, $3, $4, $5, $6, $7, $8, $9,
-      $10, $11, $12, $13, $14, $15
+      $10, $11, $12, $13, $14, $15, $16
     )`;
 
-  const { id, name, description, category, data, preparation } = ingredient;
+  const { id, name, description, category, data, preparation, createdAt } =
+    ingredient;
 
   await query(
     insertQuery,
@@ -132,6 +134,7 @@ export async function insertIngredient(
       data?.stabilizers,
       preparation?.instructions,
       preparation?.description,
+      createdAt,
     ],
     client,
   );

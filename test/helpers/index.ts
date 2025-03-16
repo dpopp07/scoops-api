@@ -26,6 +26,7 @@ export function getUser(): User {
   return {
     ...getUserPrototype(),
     id: 'my-user-1234',
+    createdAt: '2025-03-16T03:06:22.133Z',
   };
 }
 
@@ -41,6 +42,7 @@ export function getTestRecipe(): Recipe {
   return {
     ...recipePrototype,
     id: 'my-recipe-1234',
+    createdAt: '2025-03-16T03:06:22.133Z',
     canonicalName: canonicalizeName(recipePrototype.name),
     version: 1,
     analysis: {
@@ -85,6 +87,7 @@ export function getIngredientMap(recipe: RecipePrototype): IngredientMap {
       ...map,
       [name]: {
         id: mockIngredientId(idx),
+        createdAt: '2025-03-16T03:06:22.133Z',
         ...findIngredientByName(name),
       },
     };

@@ -5,7 +5,7 @@ import { RequestError, ValidationError } from '../errors';
 import { ingredients as ingredientStore } from '../model/database/controllers';
 import { validateIngredient } from '../model/schemas';
 import type { Ingredient, IngredientPrototype } from '../model/types';
-import { getLogger, parseAjvErrors } from '../utils';
+import { computeDateTime, getLogger, parseAjvErrors } from '../utils';
 
 const logger = getLogger({
   layer: 'controller',
@@ -40,6 +40,7 @@ export async function createIngredient(req: Request, res: Response) {
   const ingredient: Ingredient = {
     ...newIngredient,
     id: uuid(),
+    createdAt: computeDateTime(),
   };
 
   await ingredientStore.create(ingredient);

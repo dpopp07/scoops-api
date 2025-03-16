@@ -77,6 +77,7 @@ export async function insertRecipe(recipe: Recipe, client?: Queryable) {
       canonical_name,
       description,
       subtitle,
+      created_at,
       instructions,
       base,
       estimated_mass,
@@ -94,7 +95,7 @@ export async function insertRecipe(recipe: Recipe, client?: Queryable) {
       stabilizers
     ) VALUES (
       $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,
-      $12, $13, $14, $15, $16, $17, $18, $19, $20
+      $12, $13, $14, $15, $16, $17, $18, $19, $20, $21
     )`;
 
   const {
@@ -103,6 +104,7 @@ export async function insertRecipe(recipe: Recipe, client?: Queryable) {
     canonicalName,
     description,
     subtitle,
+    createdAt,
     instructions,
     base,
     estimatedMass,
@@ -118,6 +120,7 @@ export async function insertRecipe(recipe: Recipe, client?: Queryable) {
       canonicalName,
       description,
       subtitle,
+      createdAt,
       instructions,
       base,
       estimatedMass,

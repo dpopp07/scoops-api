@@ -5,6 +5,7 @@ export interface RecipeSummary {
   name: string;
   subtitle: string;
   canonicalName: string;
+  createdAt: string;
 }
 
 export interface RecipeCollection {
@@ -38,4 +39,5 @@ export interface Recipe extends RecipePrototype {
   analysis: Analysis;
   ingredients: RecipeIngredient[];
   version: number;
+  createdAt: string;
 }

@@ -53,11 +53,14 @@ describe('Controllers: Ingredients', () => {
       expect(createSpy).toHaveBeenCalledWith({
         ...ingredientPrototype,
         id: expect.any(String),
+        createdAt: expect.any(String),
       });
 
       const createdIngredient = createSpy.mock.calls[0][0];
 
       expect(validate(createdIngredient.id)).toBe(true);
+      expect(new Date(createdIngredient.createdAt)).toBeInstanceOf(Date);
+      expect(new Date(createdIngredient.createdAt).getTime()).not.toBeNaN();
 
       expect(statusMock).toHaveBeenCalledWith(201);
       expect(jsonMock).toHaveBeenCalledWith(createdIngredient);

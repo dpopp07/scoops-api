@@ -7,7 +7,7 @@ import { ValidationError } from '../errors';
 import { users as userStore } from '../model/database/controllers';
 import { validateUser } from '../model/schemas';
 import type { User, UserPrototype, UserWithToken } from '../model/types';
-import { config, getLogger, parseAjvErrors } from '../utils';
+import { computeDateTime, config, getLogger, parseAjvErrors } from '../utils';
 import { Token } from '../utils/token';
 
 const logger = getLogger({
@@ -32,6 +32,7 @@ export async function register(req: Request, res: Response) {
 
   const userInfo: User = {
     id: uuid(),
+    createdAt: computeDateTime(),
     ...newUser,
   };
 

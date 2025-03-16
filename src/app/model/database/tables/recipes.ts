@@ -7,6 +7,7 @@ export interface RecipeTableSummary {
   name: string;
   canonical_name: string;
   subtitle: string;
+  created_at: string;
 }
 
 export interface RecipeTable extends RecipeTableSummary {
@@ -35,6 +36,7 @@ export function tableToRecipe(recipe: RecipeTable): Recipe {
     version,
     name,
     subtitle,
+    created_at,
     estimated_mass,
     base,
     description,
@@ -58,6 +60,7 @@ export function tableToRecipe(recipe: RecipeTable): Recipe {
     version,
     name,
     subtitle,
+    createdAt: created_at,
     estimatedMass: estimated_mass,
     base,
     description,
@@ -82,12 +85,13 @@ export function tableToRecipe(recipe: RecipeTable): Recipe {
 export function tableToRecipeSummary(
   recipe: RecipeTableSummary,
 ): RecipeSummary {
-  const { id, name, canonical_name, subtitle } = recipe;
+  const { id, name, canonical_name, subtitle, created_at } = recipe;
 
   return {
     id,
     name,
     canonicalName: canonical_name,
     subtitle,
+    createdAt: created_at,
   };
 }

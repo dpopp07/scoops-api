@@ -196,6 +196,7 @@ describe('Controllers: Recipes', () => {
       expect(createSpy).toHaveBeenCalledWith({
         ...recipePrototype,
         id: expect.any(String),
+        createdAt: expect.any(String),
         canonicalName: canonicalizeName(recipePrototype.name),
         version: 1,
         analysis: expect.objectContaining({
@@ -217,6 +218,8 @@ describe('Controllers: Recipes', () => {
       const createdRecipe = createSpy.mock.calls[0][0];
 
       expect(validate(createdRecipe.id)).toBe(true);
+      expect(new Date(createdRecipe.createdAt)).toBeInstanceOf(Date);
+      expect(new Date(createdRecipe.createdAt).getTime()).not.toBeNaN();
       for (const i of createdRecipe.ingredients) {
         expect(i).toEqual(
           expect.objectContaining({
