@@ -1,10 +1,10 @@
 {
   "name": "scoops-api",
-  "type": "module",
   "version": "0.0.1",
   "description": "An API supporting the Scoops ice cream recipe app.",
   "main": "src/server.js",
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "npm run type-check && tsx watch src/server.ts",
     "type-check": "tsc --noEmit",
     "build": "tsc",

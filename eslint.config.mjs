@@ -25,6 +25,6 @@ export default [
       ],
     },
   },
-  { ignores: ['coverage/'] },
+  { ignores: ['coverage/', 'dist/'] },
   eslintConfigPrettier,
 ];
