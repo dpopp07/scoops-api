@@ -1,4 +1,3 @@
-import { Request, Response } from 'express';
 import PinoHttp, { Options } from 'pino-http';
 import { config, getLogger } from '../utils';
 
@@ -13,17 +12,27 @@ const loggerOptions: Options = {
   customSuccessMessage: () => {
     return `Request completed`;
   },
+  customErrorMessage: () => {
+    return `Request errored`;
+  },
+  serializers: {
+    req(req) {
+      req.ip = req.raw.ip;
+      req.ips = req.raw.ips;
+      return req;
+    },
+  },
 };
 
 // Remove a bunch of information to make the development
 // logs more sparse and readable.
 if (config.DEVELOPMENT_LOGGING) {
   loggerOptions.serializers = {
-    req(req: Request) {
+    req(req) {
       const { id, method, url } = req;
       return { id, method, url };
     },
-    res(res: Response) {
+    res(res) {
       const { statusCode } = res;
       return { statusCode };
     },

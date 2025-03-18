@@ -1,3 +1,4 @@
+import { readFileSync } from 'fs';
 import pg from 'pg';
 
 import { DatabaseError } from '../../errors/database-error';
@@ -10,6 +11,11 @@ const pool = new Pool({
   host: config.DB_HOST,
   user: config.DB_USERNAME,
   password: config.DB_PASSWORD,
+  ssl: config.DB_CERT_FILE
+    ? {
+        ca: readFileSync(config.DB_CERT_FILE).toString(),
+      }
+    : undefined,
 });
 
 // The pg module relies on "any" types for queries, both their params and the

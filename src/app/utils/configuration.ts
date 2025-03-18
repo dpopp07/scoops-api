@@ -11,6 +11,7 @@ interface Configuration {
   DB_HOST?: string;
   DB_USERNAME?: string;
   DB_PASSWORD?: string;
+  DB_CERT_FILE?: string;
   LOG_LEVEL: string;
   DEVELOPMENT_LOGGING: boolean;
   CACHE_GET_RESPONSES: boolean;
@@ -55,6 +56,10 @@ const schema: JSONSchemaType<Configuration> = {
       nullable: true,
     },
     DB_PASSWORD: {
+      type: 'string',
+      nullable: true,
+    },
+    DB_CERT_FILE: {
       type: 'string',
       nullable: true,
     },

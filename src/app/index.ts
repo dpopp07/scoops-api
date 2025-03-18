@@ -18,6 +18,8 @@ import { apiRouter } from './routes';
 // Set up app.
 const app = express();
 
+// Enable reverse proxy.
+app.set('trust proxy', 1);
 app.use(requestId);
 app.use(compression());
 app.use(cors({ methods: ['GET'] }));
